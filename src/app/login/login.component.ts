@@ -10,6 +10,7 @@ import { LoginCredentials } from '../models/LoginCredentials';
 export class LoginComponent {
   public username!: string;
   public password!: string;
+
   constructor(
     private loginService: LoginService
   ){}
@@ -18,5 +19,4 @@ export class LoginComponent {
     const credentials: LoginCredentials = new LoginCredentials(this.username, this.password);
     this.loginService.sendLoginRequest(credentials);
   }
-
 }
