@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { LoginService } from './login.service';
 import { LoginCredentials } from '../models/LoginCredentials';
 
@@ -8,15 +8,17 @@ import { LoginCredentials } from '../models/LoginCredentials';
   styleUrl: './login.component.less'
 })
 export class LoginComponent {
-  public username!: string;
-  public password!: string;
+  credentials!: LoginCredentials;
 
   constructor(
     private loginService: LoginService
   ){}
 
+  public handleLoginCredentials(credentials: LoginCredentials): void{
+    this.credentials = credentials;
+  }
+
   public login(): void{
-    const credentials: LoginCredentials = new LoginCredentials(this.username, this.password);
-    this.loginService.sendLoginRequest(credentials);
+    this.loginService.sendLoginRequest(this.credentials);
   }
 }
