@@ -17,6 +17,7 @@ export class RegisterComponent {
 
   public handleRegisterCredentials(credentials: RegisterCredentials): void{
     this.credentials = credentials;
+    this.register();
   }
 
   public register(): void{
