@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { RegisterCredentials } from '../../models/RegisterCredentials';
 import { Router } from '@angular/router';
+import { RegisterService } from '../register.service';
 
 @Component({
   selector: 'app-registerform',
@@ -12,12 +13,22 @@ export class RegisterformComponent {
   public password = '';
   public email = '';
   public usernameError = false;
+  public usernameInUse = false;
   public emailError = false;
   public passwordError = false;
 
   @Output() registerCredentialsEvent = new EventEmitter<RegisterCredentials>();
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private registerService: RegisterService
+    ) {}
+
+  ngOnInit(){
+    this.registerService.usernameInUse$.subscribe(isUsernameInUse => {
+      this.usernameInUse = isUsernameInUse;
+    });
+  }
 
   public register(): void {
     if (this.checkInputs()) {

@@ -20,6 +20,7 @@ export class LoginComponent {
   }
 
   public login(): void{
+    console.log(this.credentials.username);
     this.loginService.sendLoginRequest(this.credentials);
   }
 }

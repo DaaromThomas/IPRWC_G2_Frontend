@@ -21,6 +21,7 @@ export class RegisterComponent {
   }
 
   public register(): void{
+    console.log(this.credentials.username);
     this.registerService.sendRegisterRequest(this.credentials);
   }
 
