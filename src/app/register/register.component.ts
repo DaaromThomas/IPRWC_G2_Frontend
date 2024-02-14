@@ -8,17 +8,19 @@ import { RegisterService } from './register.service';
   styleUrl: './register.component.less'
 })
 export class RegisterComponent {
-  public username!: string;
-  public password!: string;
-  public email!: string;
+
+  private credentials!: RegisterCredentials;
 
   constructor(
     private registerService: RegisterService
   ){}
 
+  public handleRegisterCredentials(credentials: RegisterCredentials): void{
+    this.credentials = credentials;
+  }
+
   public register(): void{
-    const registerCredentials: RegisterCredentials = new RegisterCredentials(this.username, this.password, this.email);
-    this.registerService.sendRegisterRequest(registerCredentials);
+    this.registerService.sendRegisterRequest(this.credentials);
   }
 
 }

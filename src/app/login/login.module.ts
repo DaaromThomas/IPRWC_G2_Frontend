@@ -1,8 +1,9 @@
 import { LoginComponent } from './login.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { LoginformComponent } from './loginform/loginform.component';
+import { CommonModule } from '@angular/common';
 
 
 @NgModule({
@@ -12,7 +13,8 @@ import { LoginformComponent } from './loginform/loginform.component';
   ],
   imports: [
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    CommonModule
   ]
 })
 export class LoginModule { }

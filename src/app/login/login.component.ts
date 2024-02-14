@@ -16,6 +16,7 @@ export class LoginComponent {
 
   public handleLoginCredentials(credentials: LoginCredentials): void{
     this.credentials = credentials;
+    this.login();
   }
 
   public login(): void{
