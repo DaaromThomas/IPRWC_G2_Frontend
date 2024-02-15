@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { LoginCredentials } from '../../models/LoginCredentials';
 import { Router } from '@angular/router';
+import { LoginService } from '../login.service';
 
 @Component({
   selector: 'app-loginform',
@@ -12,10 +13,20 @@ export class LoginformComponent {
   public password = '';
   public usernameError = false;
   public passwordError = false;
+  public loginError = false;
 
   @Output() loginCredentialsEvent = new EventEmitter<LoginCredentials>();
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private loginService: LoginService  
+  ) {}
+
+  ngOnInit(){
+    this.loginService.loginError$.subscribe(loginError => {
+      this.loginError = loginError;
+    })
+  }
 
   public login(): void {
     if (this.checkInputs()) {
