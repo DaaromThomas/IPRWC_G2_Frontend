@@ -1,0 +1,11 @@
+<form (ngSubmit)="login()">
+    <label id="loginLabel">Login</label>
+    <label class="errorLabel" *ngIf="loginError">Username or password is incorrect</label>
+    <input type="text" [(ngModel)]="username" name="username" placeholder="Enter username" [ngClass]="{ 'error-border': usernameError }">
+    <label for="username" class="errorLabel" *ngIf="usernameError">Username error</label>
+    <input type="password" [(ngModel)]="password" name="password" placeholder="Enter password" [ngClass]="{ 'error-border': passwordError }">
+    <label for="password" class="errorLabel" *ngIf="passwordError">Password error</label>
+    <button type="submit">Submit</button>
+    <label class="noAccountYet" (click)="navigateToRegisterComponent()">No account yet?</label>
+</form>
+  

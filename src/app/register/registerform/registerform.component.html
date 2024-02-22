@@ -1,0 +1,12 @@
+<form (submit)="register()">
+    <label>Register</label>
+    <input type="text" [(ngModel)]="username" name="username" id="username" placeholder="Enter username" [ngClass]="{ 'error-border': usernameError || usernameInUse }">
+    <label for="username" class="errorLabel" *ngIf="usernameError">Username error</label>
+    <label for="username" class="errorLabel" *ngIf="usernameInUse">Username is in use</label>
+    <input type="email" [(ngModel)]="email" name="email" id="email" placeholder="Enter email" [ngClass]="{ 'error-border': emailError }">
+    <label for="email" class="errorLabel" *ngIf="emailError">Email error</label>
+    <input type="password" [(ngModel)]="password" name="password" id="password" placeholder="Enter password" [ngClass]="{ 'error-border': passwordError }">
+    <label for="password" class="errorLabel" *ngIf="passwordError">Password error</label>
+    <button type="submit">Submit</button>
+    <label class="alreadyGotAccount" (click)="navigateToLoginComponent()">Already got an account?</label>
+</form>

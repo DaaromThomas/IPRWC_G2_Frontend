@@ -1,0 +1,73 @@
+/* Define variables */
+@form-width: 300px;
+@input-padding: 10px;
+@input-margin: 10px 0;
+@input-border: 1px solid #4CAF50;
+@input-border-radius: 5px;
+@button-padding: 10px;
+@button-border-radius: 5px;
+@button-transition: background-color 0.3s ease;
+@button-background-color: #4CAF50;
+@button-hover-color: #45a049;
+@button-color: white;
+
+form {
+  width: @form-width;
+  padding: @input-padding;
+  border-radius: @input-border-radius;
+  background-color: #f2f2f2;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: auto;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"]  {
+  width: 100%;
+  padding: @input-padding;
+  margin: @input-margin;
+  border: @input-border;
+  border-radius: @input-border-radius;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+button {
+  width: 100%;
+  background-color: @button-background-color;
+  color: @button-color;
+  padding: @button-padding;
+  border: none;
+  border-radius: @button-border-radius;
+  cursor: pointer;
+  font-size: 16px;
+  transition: @button-transition;
+  margin-top: 5px;
+}
+
+button[type="submit"]:hover {
+  background-color: @button-hover-color;
+}
+
+label {
+  color: #4CAF50;
+  display: block;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.alreadyGotAccount:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.error-border {
+  border: 1px solid red !important;
+}
+
+.errorLabel{
+  color: red !important;
+  margin-top: -5px;
+  margin-left: 3px;
+  text-align: left;
+}
