@@ -21,11 +21,20 @@ export class LoginService {
       .post("http://localhost:8080/login", credentials, { responseType: 'text' })
       .subscribe((data) => {
       this.JWTToken = data;
+      console.log(data);
     }, (error) => {
       if(error.error === "Username or password is incorrect"){
         this.loginErrorSubject.next(true);
       }
     });
+  }
+
+  public get JwtToken(){
+    return this.JWTToken;
+  }
+
+  public set JwtToken(token: string){
+    this.JWTToken = token;
   }
 }
 
