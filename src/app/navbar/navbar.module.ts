@@ -4,6 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { NavbarButtonComponent } from './navbar-button/navbar-button.component';
 import { NavbarComponent } from './navbar.component';
+import { AppRoutingModule } from '../app-routing.module';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { NavbarComponent } from './navbar.component';
   imports: [
     FormsModule,
     HttpClientModule,
-    CommonModule
+    CommonModule,
+    AppRoutingModule
   ],exports: [ NavbarComponent]
 })
 export class NavbarModule { }
