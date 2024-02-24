@@ -7,18 +7,19 @@ import { LoginModule } from './login/login.module';
 import { RegisterModule } from './register/register.module';
 import { NavbarModule } from './navbar/navbar.module';
 import { HomeComponent } from './home/home.component';
+import { HomeModule } from './home/home.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HomeComponent
+    AppComponent
     ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     LoginModule,
     RegisterModule,
-    NavbarModule
+    NavbarModule,
+    HomeModule
   ],
   providers: [
     provideClientHydration()

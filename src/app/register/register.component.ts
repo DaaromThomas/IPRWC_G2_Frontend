@@ -1,19 +1,25 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RegisterCredentials } from '../models/RegisterCredentials';
 import { RegisterService } from './register.service';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrl: './register.component.less'
 })
-export class RegisterComponent {
+export class RegisterComponent implements OnInit{
 
   private credentials!: RegisterCredentials;
 
   constructor(
-    private registerService: RegisterService
+    private registerService: RegisterService,
+    private appComponent: AppComponent
   ){}
+
+  ngOnInit(): void {
+    this.appComponent.shopping = false;
+  }
 
   public handleRegisterCredentials(credentials: RegisterCredentials): void{
     this.credentials = credentials;

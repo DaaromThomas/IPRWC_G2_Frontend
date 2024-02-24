@@ -4,6 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { LoginformComponent } from './loginform/loginform.component';
 import { CommonModule } from '@angular/common';
+import { AppRoutingModule } from '../app-routing.module';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { CommonModule } from '@angular/common';
   imports: [
     FormsModule,
     HttpClientModule,
-    CommonModule
+    CommonModule,
+    AppRoutingModule
   ]
 })
 export class LoginModule { }

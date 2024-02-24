@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 })
 export class AppComponent implements OnInit{
   title = 'IPRWC_G2_Frontend';
+  public shopping: boolean = false;
 
   constructor(private router: Router){}
 

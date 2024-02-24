@@ -1,7 +1,15 @@
 <div class="container">
     <div class="buttons">
-        <app-navbar-button></app-navbar-button>
-        <app-navbar-button></app-navbar-button>
-        <app-navbar-button></app-navbar-button>
+        <div class="button">
+            <a [routerLink]="['/home']" class="route">Home</a>
+        </div>
+        
+        <div class="button">
+            <a [routerLink]="['/login']" class="route">Login</a>
+        </div>
+
+        <div class="button">
+            <a [routerLink]="['/register']" class="route">Register</a>
+        </div>
     </div>
 </div>
