@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit{
   ){}
 
   ngOnInit(): void {
-    this.appComponent.shopping = false;
+    this.appComponent.setShopping(false);
   }
 
   public handleLoginCredentials(credentials: LoginCredentials): void{

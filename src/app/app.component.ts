@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -8,11 +8,27 @@ import { Router } from '@angular/router';
 })
 export class AppComponent implements OnInit{
   title = 'IPRWC_G2_Frontend';
-  public shopping: boolean = false;
+  public shopping: boolean = true;
 
-  constructor(private router: Router){}
+  constructor(private router: Router, private cdr: ChangeDetectorRef){}
 
-  ngOnInit(){
-    this.router.navigate(['/login']);
+  ngOnInit() {
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        if (event.url === '/login' || event.url === '/register') {
+          this.setShopping(false);
+          this.cdr.detectChanges();
+        }
+      }
+    });
+  }
+
+  setShopping(value: boolean){
+    this.shopping = value;
+    this.cdr.detectChanges();
+  }
+
+  getShopping(){
+    return this.shopping;
   }
 }

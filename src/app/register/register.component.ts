@@ -18,7 +18,7 @@ export class RegisterComponent implements OnInit{
   ){}
 
   ngOnInit(): void {
-    this.appComponent.shopping = false;
+    this.appComponent.setShopping(false);
   }
 
   public handleRegisterCredentials(credentials: RegisterCredentials): void{
