@@ -9,6 +9,7 @@ import { NavigationEnd, Router } from '@angular/router';
 export class AppComponent implements OnInit{
   title = 'IPRWC_G2_Frontend';
   public shopping: boolean = true;
+  public loggedIn: boolean = false;
 
   constructor(private router: Router, private cdr: ChangeDetectorRef){}
 
@@ -21,6 +22,15 @@ export class AppComponent implements OnInit{
         }
       }
     });
+  }
+
+  setLoggedIn(value: boolean){
+    this.loggedIn = value;
+    this.cdr.detectChanges();
+  }
+
+  getLoggedIn(){
+    return this.loggedIn;
   }
 
   setShopping(value: boolean){

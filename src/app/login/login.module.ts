@@ -10,13 +10,13 @@ import { AppRoutingModule } from '../app-routing.module';
 @NgModule({
   declarations: [
     LoginComponent,
-    LoginformComponent
+    LoginformComponent,
   ],
   imports: [
     FormsModule,
     HttpClientModule,
     CommonModule,
-    AppRoutingModule
+    AppRoutingModule,
   ]
 })
 export class LoginModule { }

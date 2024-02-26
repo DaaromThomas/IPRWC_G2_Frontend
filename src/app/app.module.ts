@@ -6,8 +6,9 @@ import { AppComponent } from './app.component';
 import { LoginModule } from './login/login.module';
 import { RegisterModule } from './register/register.module';
 import { NavbarModule } from './navbar/navbar.module';
-import { HomeComponent } from './home/home.component';
 import { HomeModule } from './home/home.module';
+import { ShopModule } from './shop/shop.module';
+import { CartModule } from './cart/cart.module';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,9 @@ import { HomeModule } from './home/home.module';
     LoginModule,
     RegisterModule,
     NavbarModule,
-    HomeModule
+    HomeModule,
+    ShopModule,
+    CartModule
   ],
   providers: [
     provideClientHydration()

@@ -1,13 +1,16 @@
 <div class="container">
     <div class="buttons">
-        <div class="button">
+        <div class="button" id="home">
             <a routerLinkActive="active" [routerLink]="['/home']" class="route">Home</a>
         </div>
-        <div class="button">
-            <a routerLinkActive="active" [routerLink]="['/home']" class="route">Home</a>
+        <div class="button" id="shop">
+            <a routerLinkActive="active" [routerLink]="['/shop']" class="route">Shop</a>
         </div>
-        <div class="button">
-            <a routerLinkActive="active" [routerLink]="['/login']" class="route">Login</a>
+        <div class="button" id="cart">
+            <a routerLinkActive="active" [routerLink]="['/cart']" class="route">Cart</a>
+        </div>
+        <div class="login" id="login">
+            <a *ngIf="!loggedIn" routerLinkActive="active" [routerLink]="['/login']" class="route">Login</a>
         </div>
     </div>
 </div>
