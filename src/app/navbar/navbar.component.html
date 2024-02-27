@@ -9,8 +9,11 @@
         <div class="button" id="cart">
             <a routerLinkActive="active" [routerLink]="['/cart']" class="route">Cart</a>
         </div>
-        <div class="login" id="login">
-            <a *ngIf="!loggedIn" routerLinkActive="active" [routerLink]="['/login']" class="route">Login</a>
+        <div *ngIf="isAdmin" class="button" id="Admin">
+            <a  routerLinkActive="active" [routerLink]="['/admin']" class="route">Admin</a>
+        </div>
+        <div *ngIf="!loggedIn" class="login" id="login">
+            <a routerLinkActive="active" [routerLink]="['/login']" class="route">Login</a>
         </div>
     </div>
 </div>

@@ -3,7 +3,6 @@ import { RegisterCredentials } from '../models/RegisterCredentials';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
 import { LoginService } from '../login/login.service';
-import { AppComponent } from '../app.component';
 import { Router } from '@angular/router';
 
 @Injectable({
@@ -17,8 +16,7 @@ export class RegisterService {
   constructor(
     private http: HttpClient,
     private loginService: LoginService,
-    private appComponent: AppComponent,
-    private router: Router
+    private router: Router,
   ){}
 
   sendRegisterRequest(credentials: RegisterCredentials) {
@@ -27,8 +25,8 @@ export class RegisterService {
       .subscribe((data) => {
         console.log(data);
         this.loginService.JwtToken = data;
-        this.appComponent.setLoggedIn(true);
         this.router.navigate(['/home']);
+        this.loginService.checkIfUserIsAdmin();
       }, (error) => {
         if(error.error === "Username in use"){
           this.usernameInUseSubject.next(true);

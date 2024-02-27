@@ -9,10 +9,14 @@ import { NavbarModule } from './navbar/navbar.module';
 import { HomeModule } from './home/home.module';
 import { ShopModule } from './shop/shop.module';
 import { CartModule } from './cart/cart.module';
+import { AdminComponent } from './admin/admin.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { JwtServiceService } from './authentication/jwt-service.service';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AdminComponent
     ],
   imports: [
     BrowserModule,
@@ -25,7 +29,8 @@ import { CartModule } from './cart/cart.module';
     CartModule
   ],
   providers: [
-    provideClientHydration()
+    provideClientHydration(),
+    {provide: HTTP_INTERCEPTORS, useClass: JwtServiceService, multi: true}
   ],
   bootstrap: [AppComponent]
 })
