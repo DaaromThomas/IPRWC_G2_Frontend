@@ -15,10 +15,8 @@ export class RegisterformComponent {
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required, Validators.minLength(6)]]
   });
-  public usernameError = false;
+  
   public usernameInUse = false;
-  public emailError = false;
-  public passwordError = false;
 
   @Output() registerCredentialsEvent = new EventEmitter<RegisterCredentials>();
 

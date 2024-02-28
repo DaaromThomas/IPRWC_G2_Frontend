@@ -27,6 +27,7 @@ export class RegisterService {
         this.loginService.JwtToken = data;
         this.router.navigate(['/home']);
         this.loginService.checkIfUserIsAdmin();
+        this.usernameInUseSubject.next(false);
       }, (error) => {
         if(error.error === "Username in use"){
           this.usernameInUseSubject.next(true);
