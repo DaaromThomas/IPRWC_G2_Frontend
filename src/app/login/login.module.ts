@@ -1,5 +1,5 @@
 import { LoginComponent } from './login.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ChangeDetectorRef, NgModule } from '@angular/core';
 import { LoginformComponent } from './loginform/loginform.component';
@@ -17,7 +17,8 @@ import { NavbarComponent } from '../navbar/navbar.component';
     FormsModule,
     HttpClientModule,
     CommonModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers:[NavbarComponent]
 })

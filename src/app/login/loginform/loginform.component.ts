@@ -2,6 +2,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { LoginCredentials } from '../../models/LoginCredentials';
 import { Router } from '@angular/router';
 import { LoginService } from '../login.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-loginform',
@@ -17,9 +18,15 @@ export class LoginformComponent {
 
   @Output() loginCredentialsEvent = new EventEmitter<LoginCredentials>();
 
+  loginForm: FormGroup = this.formBuilder.group({
+    username: ['', Validators.required],
+    password: ['', Validators.required]
+  });
+
   constructor(
     private router: Router,
-    private loginService: LoginService  
+    private loginService: LoginService,
+    private formBuilder: FormBuilder  
   ) {}
 
   ngOnInit(){
@@ -29,27 +36,11 @@ export class LoginformComponent {
   }
 
   public login(): void {
-    if (this.checkInputs()) {
-      const credentials: LoginCredentials = new LoginCredentials(this.username, this.password);
+    if (this.loginForm.valid) {
+      const formData = this.loginForm.value;
+      const credentials: LoginCredentials = new LoginCredentials(formData.username, formData.password);
       this.loginCredentialsEvent.emit(credentials);
     }
-  }
-
-  private checkInputs(): boolean {
-    let isValid = true;
-    if (!this.username.trim()) {
-      this.usernameError = true;
-      isValid = false;
-    } else {
-      this.usernameError = false;
-    }
-    if (!this.password.trim()) {
-      this.passwordError = true;
-      isValid = false;
-    } else {
-      this.passwordError = false;
-    }
-    return isValid;
   }
 
   public navigateToRegisterComponent(): void {
