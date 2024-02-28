@@ -2,7 +2,6 @@
     <h2>Add Product</h2>
     <div class="form-group">
         <label for="productName">Product Name</label>
-        <label *ngIf="response">{{response}}</label>
         <input type="text" 
                 id="productName" 
                 placeholder="Product Name" 
@@ -29,5 +28,13 @@
         <button type="button" [disabled]="checkValues()" class="empty-button" (click)="emptyValues()">Empty</button>
         <button type="submit" [disabled]="productForm.invalid" class="submit-button">Add Product</button>
     </div>
+    <div class="response">
+        <label
+        [ngStyle]="{
+            'color': response === 'Error while saving product' ? 'red' : 'green'}"
+        class="response-message">{{response}}</label>
+    </div>
+    
 </form>
+
 
