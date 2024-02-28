@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { Product } from '../../model/product';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-add-product',
@@ -8,63 +9,22 @@ import { Product } from '../../model/product';
 })
 export class AddProductComponent {
   @Output() product = new EventEmitter<Product>(); 
-  public name!: string;
-  public imageData!: string;
-  public cost!: number;
+  productForm: FormGroup = this.fb.group({
+    name: ['', Validators.required],
+    image: ['', Validators.required],
+    cost: ['', [Validators.required, Validators.min(0)]]
+  });
+  constructor(private fb: FormBuilder) { }
 
-  public nameError: boolean = false;
-  public imageError: boolean = false;
-  public costError: boolean = false;
 
-  public emitProduct(){
-    if(!this.checkData()){
-      return;
+  onSubmit() {
+    if (this.productForm.valid) {
+      const productData = this.productForm.value;
+      console.log(productData);
+      const product: Product = new Product(productData.name, productData.image, productData.cost);
+      this.product.emit(product);
+    } else {
+      // Form is invalid, handle errors or show validation messages
     }
-
-    const product: Product = new Product(this.name, this.imageData, this.cost);
-    this.product.emit(product);
-  }
-
-  private checkData(): boolean{
-    if(!this.checkName()){
-      return false;
-    }
-    if(!this.checkImage()){
-      return false;
-    }
-    if(!this.checkCost()){
-      return false;
-    }
-    return true;
-  }
-
-  private checkName(): boolean{
-    if (typeof this.name !== 'string') {
-      return false;
-    }
-    if(this.name === null || this.name === undefined){
-      return false;
-    }
-    return true;
-  }
-
-  private checkImage(): boolean{
-    if (typeof this.imageData !== 'string') {
-      return false;
-    }
-    if(this.imageData === null || this.imageData === undefined){
-      return false;
-    }
-    return true;
-  }
-
-  private checkCost(): boolean{
-    if (typeof this.cost !== 'number') {
-      return false;
-    }
-    if(this.cost === null || this.cost === undefined || this.cost < 0){
-      return false;
-    }
-    return true;
   }
 }

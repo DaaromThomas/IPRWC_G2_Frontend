@@ -1,13 +1,14 @@
-<form class="add-product-component" (ngSubmit)="emitProduct()">
+<form class="add-product-component" [formGroup]="productForm" (ngSubmit)="onSubmit()">
     <h2>Add Product</h2>
     <div class="inputs">
-        <label *ngIf="!nameError" for="productName">Error in name</label>
-        <input type="text" id="productName" placeholder="Product Name" [(ngModel)]="name" required>
-        <label *ngIf="!imageError" for="productName">Error in image-URL</label>
-        <input type="text" id="productImage" placeholder="Image URL" [(ngModel)]="imageData" required>
-        <label *ngIf="!costError" for="productName">Error in cost</label>
-        <input type="number" id="productCost" placeholder="Cost" [(ngModel)]="cost" required>
+        <label *ngIf="productForm.get('name')?.invalid && productForm.get('name')?.touched">Please provide a valid name</label>
+        <input type="text" id="productName" placeholder="Product Name" formControlName="name">
+        <label *ngIf="productForm.get('image')?.invalid && productForm.get('image')?.touched">Please provide a valid image URL</label>
+        <input type="text" id="productImage" placeholder="Image URL" formControlName="image">
+        <label *ngIf="productForm.get('cost')?.invalid && productForm.get('cost')?.touched">Please provide a valid cost</label>
+        <input type="number" id="productCost" placeholder="Cost" formControlName="cost">
     </div>
     <button type="button">Cancel</button>
-    <button type="submit">Add Product</button>
+    <button type="submit" [disabled]="productForm.invalid">Add Product</button>
 </form>
+

@@ -14,6 +14,6 @@ export class AdminComponent {
   ){}
 
   public addNewProduct(product: Product){
-    this.adminService.addProductRequest();
+    this.adminService.addProductRequest(product);
   }
 }
