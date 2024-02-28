@@ -38,10 +38,11 @@ export class LoginService {
   public checkIfUserIsAdmin(){
     this.http.post("http://localhost:8080/checkuser", this.JwtToken, {responseType: "text"})
       .subscribe((data) => {
-        this.router.navigate(['/home']);
         if(data === "Admin"){
+          this.router.navigate(['/admin']);
           this.isAdminSubject.next(true);
         }else{
+          this.router.navigate(['/home']);
           this.isAdminSubject.next(false)
         }
       });

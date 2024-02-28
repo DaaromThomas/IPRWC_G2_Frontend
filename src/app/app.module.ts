@@ -13,6 +13,7 @@ import { AdminComponent } from './admin/admin.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtServiceService } from './authentication/jwt-service.service';
 import { AdminModule } from './admin/admin.module';
+import { AdminService } from './admin/admin.service';
 
 @NgModule({
   declarations: [
@@ -31,8 +32,7 @@ import { AdminModule } from './admin/admin.module';
   ],
   providers: [
     provideClientHydration(),
-    {provide: HTTP_INTERCEPTORS, useClass: JwtServiceService, multi: true}
-  ],
+    {provide: HTTP_INTERCEPTORS, useClass: JwtServiceService, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

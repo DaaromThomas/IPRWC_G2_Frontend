@@ -2,6 +2,7 @@
     <h2>Add Product</h2>
     <div class="form-group">
         <label for="productName">Product Name</label>
+        <label *ngIf="response">{{response}}</label>
         <input type="text" 
                 id="productName" 
                 placeholder="Product Name" 

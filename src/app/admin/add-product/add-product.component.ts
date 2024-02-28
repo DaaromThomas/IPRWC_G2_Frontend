@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Product } from '../../model/product';
 import { FormBuilder, FormGroup, Validators, AbstractControl, ValidatorFn } from '@angular/forms';
 
@@ -9,6 +9,7 @@ import { FormBuilder, FormGroup, Validators, AbstractControl, ValidatorFn } from
 })
 export class AddProductComponent {
   @Output() product = new EventEmitter<Product>();
+  @Input() response: string = '';
   productForm: FormGroup;
 
   constructor(private fb: FormBuilder) {
