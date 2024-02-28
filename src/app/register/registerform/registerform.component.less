@@ -47,6 +47,11 @@ button {
 
 button[type="submit"]:hover {
   background-color: @button-hover-color;
+  cursor: pointer;
+}
+
+button[type="submit"]:disabled{
+  cursor: not-allowed !important;
 }
 
 label {
@@ -70,4 +75,8 @@ label {
   margin-top: -5px;
   margin-left: 3px;
   text-align: left;
+}
+
+h2{
+  margin:0;
 }

@@ -2,6 +2,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { RegisterCredentials } from '../../models/RegisterCredentials';
 import { Router } from '@angular/router';
 import { RegisterService } from '../register.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-registerform',
@@ -9,9 +10,11 @@ import { RegisterService } from '../register.service';
   styleUrls: ['./registerform.component.less']
 })
 export class RegisterformComponent {
-  public username = '';
-  public password = '';
-  public email = '';
+  registerForm: FormGroup = this.formBuilder.group({
+    username: ['', Validators.required],
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', [Validators.required, Validators.minLength(6)]]
+  });
   public usernameError = false;
   public usernameInUse = false;
   public emailError = false;
@@ -21,7 +24,8 @@ export class RegisterformComponent {
 
   constructor(
     private router: Router,
-    private registerService: RegisterService
+    private registerService: RegisterService,
+    private formBuilder: FormBuilder
     ) {}
 
   ngOnInit(){
@@ -31,38 +35,11 @@ export class RegisterformComponent {
   }
 
   public register(): void {
-    if (this.checkInputs()) {
-      const credentials: RegisterCredentials = new RegisterCredentials(this.username, this.password, this.email);
+    if (this.registerForm.valid) {
+      const formData = this.registerForm.value;
+      const credentials: RegisterCredentials = new RegisterCredentials(formData.username, formData.password, formData.email);
       this.registerCredentialsEvent.emit(credentials);
     }
-  }
-
-  private checkInputs(): boolean {
-    let isValid = true;
-    if (!this.username.trim()) {
-      this.usernameError = true;
-      isValid = false;
-    } else {
-      this.usernameError = false;
-    }
-    if (!this.email.trim() || !this.isValidEmail(this.email)) {
-      this.emailError = true;
-      isValid = false;
-    } else {
-      this.emailError = false;
-    }
-    if (!this.password.trim()) {
-      this.passwordError = true;
-      isValid = false;
-    } else {
-      this.passwordError = false;
-    }
-    return isValid;
-  }
-
-  private isValidEmail(email: string): boolean {
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailPattern.test(email);
   }
 
   public navigateToLoginComponent(): void {
