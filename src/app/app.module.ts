@@ -12,11 +12,11 @@ import { CartModule } from './cart/cart.module';
 import { AdminComponent } from './admin/admin.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtServiceService } from './authentication/jwt-service.service';
+import { AdminModule } from './admin/admin.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    AdminComponent
+    AppComponent
     ],
   imports: [
     BrowserModule,
@@ -26,7 +26,8 @@ import { JwtServiceService } from './authentication/jwt-service.service';
     NavbarModule,
     HomeModule,
     ShopModule,
-    CartModule
+    CartModule,
+    AdminModule
   ],
   providers: [
     provideClientHydration(),

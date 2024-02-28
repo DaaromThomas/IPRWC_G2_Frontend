@@ -1,5 +1,52 @@
 .container{
     height: 100vh;
+
+    footer {
+        background-color: #333;
+        color: #fff;
+        padding: 20px 0;
+        width: 100%;
+    
+        .footer-content {
+          display: flex;
+          justify-content: space-around;
+    
+          .contact-info,
+          .social-media,
+          .quick-links {
+            flex: 1;
+            margin-right: 20px;
+            margin-left: 20px;
+    
+            h4 {
+              font-size: 1.2em;
+              margin-bottom: 10px;
+            }
+    
+            p,
+            a {
+              color: #fff;
+              text-decoration: none;
+              display: block;
+              margin-bottom: 5px;
+            }
+    
+            a:hover {
+              text-decoration: underline;
+            }
+          }
+        }
+    
+        .copyright {
+          margin-top: 20px;
+          text-align: center;
+    
+          p {
+            font-size: 0.8em;
+            color: #ccc;
+          }
+        }
+    }
 }
 
 

@@ -4,11 +4,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { AppRoutingModule } from '../app-routing.module';
 import { AdminComponent } from './admin.component';
+import { AddProductComponent } from './add-product/add-product.component';
 
 
 @NgModule({
   declarations: [
-    AdminComponent
+    AdminComponent,
+    AddProductComponent
   ],
   imports: [
     FormsModule,
@@ -17,4 +19,4 @@ import { AdminComponent } from './admin.component';
     AppRoutingModule
   ],exports: [ AdminComponent ]
 })
-export class CartModule { }
+export class AdminModule { }
