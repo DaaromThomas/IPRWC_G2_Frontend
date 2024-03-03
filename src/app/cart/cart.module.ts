@@ -4,11 +4,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { AppRoutingModule } from '../app-routing.module';
 import { CartComponent } from './cart.component';
+import { ProductInCartComponent } from './product-in-cart/product-in-cart.component';
 
 
 @NgModule({
   declarations: [
-    CartComponent
+    CartComponent,
+    ProductInCartComponent
   ],
   imports: [
     FormsModule,
