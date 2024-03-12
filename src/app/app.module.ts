@@ -14,10 +14,14 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtServiceService } from './authentication/jwt-service.service';
 import { AdminModule } from './admin/admin.module';
 import { AdminService } from './admin/admin.service';
+import { OrderComponent } from './order/order.component';
+import { OrderFormComponent } from './order/order-form/order-form.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    OrderComponent,
+    OrderFormComponent
     ],
   imports: [
     BrowserModule,

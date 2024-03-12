@@ -8,7 +8,7 @@ import { isPlatformBrowser } from '@angular/common';
   providedIn: 'root'
 })
 export class CartService {
-  private productsInCart: ProductInShoppingCart[] = [];
+  public productsInCart: ProductInShoppingCart[] = [];
   private productsInCart$ = new BehaviorSubject<ProductInShoppingCart[]>([]);
 
   private costOfProducts: number = 0;
