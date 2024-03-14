@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { Product } from '../../models/product';
 import { ShopService } from '../../shop/shop.service';
 
@@ -18,27 +18,21 @@ export class ProductsComponent {
   ngOnInit() {
     this.shopService.products$.subscribe((products) => {
       this.allProducts = products;
-      this.updateProductsOnHomeScreen();
     });
+    this.shopService.getProducts();
   }
 
-  private updateProductsOnHomeScreen() {
+  ngAfterViewInit(){
+    this.getProducts()
+  }
+
+  getProducts() {
     this.productsInHomeScreen = [];
-    this.selectedIndices = [];
-    for (let i = 0; i < this.numberOfProductsOnHomeScreen; i++) {
-      const index = this.getRandomNumber(this.allProducts.length);
-      const product: Product = this.allProducts[index];
+  
+    for (let i = 0; i < Math.min(5, this.allProducts.length); i++) {
+      const product: Product = new Product(this.allProducts[i].name, this.allProducts[i].image, this.allProducts[i].cost)
       this.productsInHomeScreen.push(product);
-      this.selectedIndices.push(index);
     }
-  }
-
-  private getRandomNumber(maxNumber: number): number {
-    let randomNumber: number;
-    do {
-      randomNumber = Math.floor(Math.random() * maxNumber);
-    } while (this.selectedIndices.includes(randomNumber));
-
-    return randomNumber;
+    console.log(this.productsInHomeScreen)
   }
 }

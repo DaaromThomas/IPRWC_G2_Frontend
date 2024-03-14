@@ -16,7 +16,7 @@ export class AddProductComponent {
     this.productForm = this.fb.group({
       name: ['', Validators.required],
       image: ['', [Validators.required, this.isUrlValidator()]],
-      cost: ['', [Validators.required, Validators.min(0)]]
+      cost: ['', [Validators.required, Validators.min(0.1)]]
     });
   }
 
