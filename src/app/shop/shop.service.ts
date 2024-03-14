@@ -7,8 +7,8 @@ import { Product } from '../models/product';
   providedIn: 'root'
 })
 export class ShopService {
-  private loginErrorSubject = new BehaviorSubject<Product[]>([]);
-  loginError$ = this.loginErrorSubject.asObservable();
+  private productsSubject = new BehaviorSubject<Product[]>([]);
+  products$ = this.productsSubject.asObservable();
 
   constructor(
     private http: HttpClient
@@ -17,7 +17,7 @@ export class ShopService {
   getProducts(){
     return this.http.get<Product[]>("http://localhost:8080/products")
       .subscribe((products) => {
-        this.loginErrorSubject.next(products);
+        this.productsSubject.next(products);
       }
     );
   }
