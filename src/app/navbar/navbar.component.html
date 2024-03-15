@@ -15,5 +15,8 @@
         <div *ngIf="!loggedIn" class="login" id="login">
             <a routerLinkActive="active" [routerLink]="['/login']" class="route">Login</a>
         </div>
+        <div *ngIf="loggedIn" class="button" id="button">
+            <a (click)="logout()" routerLinkActive="active" class="route">Logout</a>
+        </div>
     </div>
 </div>

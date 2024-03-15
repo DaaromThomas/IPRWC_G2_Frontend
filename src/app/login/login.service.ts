@@ -3,7 +3,6 @@ import { ChangeDetectorRef, Injectable } from '@angular/core';
 import { LoginCredentials } from '../models/LoginCredentials';
 import { BehaviorSubject } from 'rxjs';
 import { Router } from '@angular/router';
-import { NavbarComponent } from '../navbar/navbar.component';
 
 @Injectable({
   providedIn: 'root'
@@ -46,6 +45,10 @@ export class LoginService {
           this.isAdminSubject.next(false)
         }
       });
+  }
+
+  public setAdmin(boolean: boolean){
+    this.isAdminSubject.next(boolean);
   }
 
   public get JwtToken(){

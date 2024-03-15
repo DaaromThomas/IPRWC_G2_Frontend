@@ -13,7 +13,7 @@ export class NavbarComponent {
 
   constructor(
     private appComponent: AppComponent,
-    private loginService: LoginService
+    private loginService: LoginService,
     ){
     this.loggedIn = false;
   }
@@ -23,6 +23,12 @@ export class NavbarComponent {
     this.loginService.isAdmin$.subscribe((data) => {
       this.isAdmin = data;
     })
+  }
+
+  logout(){
+    this.loginService.setAdmin(false);
+    this.loginService.JwtToken = '';
+    this.loggedIn = false;
   }
 
   setAdmin(value: boolean){

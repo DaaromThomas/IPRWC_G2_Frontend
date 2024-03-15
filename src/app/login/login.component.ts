@@ -27,6 +27,6 @@ export class LoginComponent implements OnInit{
 
   public login(): void{
     this.loginService.sendLoginRequest(this.credentials);
-    this.appComponent.setLoggedIn(true);
+    // this.appComponent.setLoggedIn(true);
   }
 }
