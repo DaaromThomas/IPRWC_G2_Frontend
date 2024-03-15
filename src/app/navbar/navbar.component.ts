@@ -22,13 +22,16 @@ export class NavbarComponent {
     this.loggedIn = this.appComponent.getLoggedIn();
     this.loginService.isAdmin$.subscribe((data) => {
       this.isAdmin = data;
+    });
+    this.loginService.isLoggedIn$.subscribe((data) => {
+      this.loggedIn = data;
     })
   }
 
   logout(){
     this.loginService.setAdmin(false);
     this.loginService.JwtToken = '';
-    this.loggedIn = false;
+    this.loginService.setLoggedIn(false)
   }
 
   setAdmin(value: boolean){

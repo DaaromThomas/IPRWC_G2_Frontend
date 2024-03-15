@@ -15,6 +15,9 @@ export class LoginService {
 
   private isAdminSubject = new BehaviorSubject<boolean>(false);
   isAdmin$ = this.isAdminSubject.asObservable();
+
+  private isLoggedInSubject = new BehaviorSubject<boolean>(false);
+  isLoggedIn$ = this.isLoggedInSubject.asObservable();
   
   constructor(
     private http: HttpClient,
@@ -40,15 +43,21 @@ export class LoginService {
         if(data === "Admin"){
           this.router.navigate(['/admin']);
           this.isAdminSubject.next(true);
+          this.isLoggedInSubject.next(true);
         }else{
           this.router.navigate(['/home']);
           this.isAdminSubject.next(false)
+          this.isLoggedInSubject.next(true);
         }
       });
   }
 
   public setAdmin(boolean: boolean){
     this.isAdminSubject.next(boolean);
+  }
+
+  public setLoggedIn(boolean: boolean){
+    this.isLoggedInSubject.next(boolean);
   }
 
   public get JwtToken(){
