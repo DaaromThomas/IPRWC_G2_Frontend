@@ -16,12 +16,11 @@ import { AdminModule } from './admin/admin.module';
 import { AdminService } from './admin/admin.service';
 import { OrderComponent } from './order/order.component';
 import { OrderFormComponent } from './order/order-form/order-form.component';
+import { OrderModule } from './order/order.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    OrderComponent,
-    OrderFormComponent
     ],
   imports: [
     BrowserModule,
@@ -32,7 +31,8 @@ import { OrderFormComponent } from './order/order-form/order-form.component';
     HomeModule,
     ShopModule,
     CartModule,
-    AdminModule
+    AdminModule,
+    OrderModule
   ],
   providers: [
     provideClientHydration(),

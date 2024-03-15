@@ -1,1 +1,29 @@
-<p>order-form works!</p>
+<form [formGroup]="orderForm" (ngSubmit)="emitOrder()">
+    <label><h2>Order</h2></label>
+    <input type="text" 
+            formControlName="customer" 
+            placeholder="Enter username" 
+            [ngClass]="{ 'error-border': orderForm.get('customer')?.invalid && orderForm.get('customer')?.touched }">
+    <div *ngIf="orderForm.get('customer')?.invalid && orderForm.get('customer')?.touched" class="errorLabel">Username error</div>
+    
+    <input type="email" 
+            formControlName="email" 
+            placeholder="Enter email" 
+            [ngClass]="{ 'error-border': orderForm.get('email')?.invalid && orderForm.get('email')?.touched }">
+    <div *ngIf="orderForm.get('email')?.invalid && orderForm.get('email')?.touched" class="errorLabel">Email error</div>
+    
+    <input type="text" 
+            formControlName="adress" 
+            placeholder="Enter adress" 
+            [ngClass]="{ 'error-border': orderForm.get('adress')?.invalid && orderForm.get('adress')?.touched }">
+    <div *ngIf="orderForm.get('adress')?.invalid && orderForm.get('adress')?.touched" class="errorLabel">Adress error</div>
+    
+    <button type="submit" [disabled]="!orderForm.valid">Submit</button>
+
+    <div class="response">
+        <label class="response-message">{{error}}</label>
+    </div>
+</form>
+
+
+  

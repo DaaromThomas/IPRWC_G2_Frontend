@@ -16,7 +16,7 @@ export class AdminService {
   ) { }
 
   public addProductRequest(product: Product){
-    return this.http.post("http://localhost:8080/addProduct", product, {responseType: 'text'})
+    return this.http.post("http://85.215.60.238:8080/addProduct", product, {responseType: 'text'})
       .subscribe((data) => {
         this.sendResponse(data);
       }, (error) => {

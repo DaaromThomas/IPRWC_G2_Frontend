@@ -21,9 +21,8 @@ export class RegisterService {
 
   sendRegisterRequest(credentials: RegisterCredentials) {
     this.http
-      .post("http://localhost:8080/register", credentials, { responseType: 'text' })
+      .post("http://85.215.60.238:8080/register", credentials, { responseType: 'text' })
       .subscribe((data) => {
-        console.log(data);
         this.loginService.JwtToken = data;
         this.router.navigate(['/home']);
         this.loginService.checkIfUserIsAdmin();

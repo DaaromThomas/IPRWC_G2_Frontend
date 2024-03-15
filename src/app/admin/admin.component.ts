@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Product } from '../models/product';
 import { AdminService } from './admin.service';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-admin',
@@ -9,13 +10,14 @@ import { AdminService } from './admin.service';
 })
 export class AdminComponent implements OnInit{
   response: string = '';
-  constructor(private adminService: AdminService) {}
+  constructor(private adminService: AdminService, private appComponent: AppComponent) {}
 
   ngOnInit(){
     this.adminService.addProductResponse$
       .subscribe((response) => {
         this.response = response;
       })
+      this.appComponent.shopping = false;
   }
 
   public addNewProduct(product: Product) {

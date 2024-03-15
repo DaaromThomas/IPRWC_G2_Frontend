@@ -4,6 +4,7 @@ import { Order } from '../models/Order';
 import { error } from 'console';
 import { SourceTextModule } from 'vm';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-order',
@@ -11,23 +12,22 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrl: './order.component.less'
 })
 export class OrderComponent {
+  public error: string = '';
 
   constructor(
     private orderService: OrderService,
-    private formBuilder: FormBuilder
+    private router: Router
   ){}
 
   public sendOrder(order: Order){
     this.orderService.sendOrderRequest(order)
     .subscribe((data) => {
       if(data === 'Order saved succesfully'){
-        console.log(data);
+        this.router.navigate(['/home']);
       }
       if(data === 'Error in saving order'){
-        console.log(data);
+        this.error = "An unexpected error has occured";
       }
-    }, (error) => {
-        console.log(error);
     }
     );
   }

@@ -27,7 +27,6 @@ export class RegisterComponent implements OnInit{
   }
 
   public register(): void{
-    console.log(this.credentials.username);
     this.registerService.sendRegisterRequest(this.credentials);
     this.appComponent.setLoggedIn(true);
   }

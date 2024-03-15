@@ -50,7 +50,7 @@ export class CartService {
     if (itemInCart) {
       itemInCart.quantity++;
     } else {
-      this.productsInCart.push(new ProductInShoppingCart(product, 1))
+      this.productsInCart.push(new ProductInShoppingCart(this.generateUUID(), product, 1))
     }
   
     this.costOfProducts += product.cost;
@@ -60,6 +60,14 @@ export class CartService {
   
     localStorage.setItem('cart', JSON.stringify(this.productsInCart));
     localStorage.setItem('totalCost', JSON.stringify(this.costOfProducts));
+  }
+
+  generateUUID(): string {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+      const r = (Math.random() * 16) | 0,
+        v = c === 'x' ? r : (r & 0x3) | 0x8;
+      return v.toString(16);
+    });
   }
 
   changeQuantity(product: Product, newQuantity: number){

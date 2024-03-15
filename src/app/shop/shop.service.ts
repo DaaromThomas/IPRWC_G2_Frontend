@@ -15,7 +15,7 @@ export class ShopService {
   ) { }
 
   getProducts(){
-    return this.http.get<Product[]>("http://localhost:8080/products")
+    return this.http.get<Product[]>("http://85.215.60.238:8080/products")
       .subscribe((products) => {
         this.productsSubject.next(products);
       }

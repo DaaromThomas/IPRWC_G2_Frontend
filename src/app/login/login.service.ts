@@ -24,7 +24,7 @@ export class LoginService {
 
   public sendLoginRequest(credentials: LoginCredentials) {
     return this.http
-      .post("http://localhost:8080/login", credentials, { responseType: 'text' })
+      .post("http://85.215.60.238:8080/login", credentials, { responseType: 'text' })
       .subscribe((data) => {
       this.JWTToken = data;
       this.checkIfUserIsAdmin();
@@ -36,7 +36,7 @@ export class LoginService {
   }
 
   public checkIfUserIsAdmin(){
-    this.http.post("http://localhost:8080/checkuser", this.JwtToken, {responseType: "text"})
+    this.http.post("http://85.215.60.238:8080/checkuser", this.JwtToken, {responseType: "text"})
       .subscribe((data) => {
         if(data === "Admin"){
           this.router.navigate(['/admin']);

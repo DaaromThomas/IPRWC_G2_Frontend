@@ -25,10 +25,6 @@ export class NavbarComponent {
     })
   }
 
-  ngAfterViewInit(){
-    console.log("ngAfterViewInit")
-  }
-
   setAdmin(value: boolean){
     this.isAdmin = value;
   }

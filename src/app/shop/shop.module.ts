@@ -5,7 +5,6 @@ import { CommonModule } from '@angular/common';
 import { AppRoutingModule } from '../app-routing.module';
 import { ShopComponent } from './shop.component';
 import { ProductsComponent } from './products/products.component';
-import { DetailsComponent } from './details/details.component';
 import { ProductComponent } from './products/product/product.component';
 
 
@@ -13,7 +12,6 @@ import { ProductComponent } from './products/product/product.component';
   declarations: [
     ShopComponent,
     ProductsComponent,
-    DetailsComponent,
     ProductComponent
   ],
   imports: [

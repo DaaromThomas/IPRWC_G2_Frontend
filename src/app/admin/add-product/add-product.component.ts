@@ -23,12 +23,19 @@ export class AddProductComponent {
   onSubmit() {
     if (this.productForm.valid) {
       const productData = this.productForm.value;
-      console.log(productData);
-      const product: Product = new Product(productData.name, productData.image, productData.cost);
+      const product: Product = new Product(this.generateUUID(), productData.name, productData.image, productData.cost);
       this.product.emit(product);
     } else {
       return;
     }
+  }
+
+  generateUUID(): string {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+      const r = (Math.random() * 16) | 0,
+        v = c === 'x' ? r : (r & 0x3) | 0x8;
+      return v.toString(16);
+    });
   }
 
   public emptyValues() {
