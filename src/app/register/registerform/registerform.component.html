@@ -1,0 +1,24 @@
+<form [formGroup]="registerForm" (ngSubmit)="register()">
+    <label><h2>Register</h2></label>
+    <input type="text" 
+            formControlName="username" 
+            placeholder="Enter username" 
+            [ngClass]="{ 'error-border': registerForm.get('username')?.invalid && registerForm.get('username')?.touched }">
+    <div *ngIf="registerForm.get('username')?.invalid && registerForm.get('username')?.touched" class="errorLabel">Username error</div>
+    <div *ngIf="usernameInUse" class="errorLabel">Username is in use</div>
+    
+    <input type="email" 
+            formControlName="email" 
+            placeholder="Enter email" 
+            [ngClass]="{ 'error-border': registerForm.get('email')?.invalid && registerForm.get('email')?.touched }">
+    <div *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched" class="errorLabel">Email error</div>
+    
+    <input type="password" 
+            formControlName="password" 
+            placeholder="Enter password" 
+            [ngClass]="{ 'error-border': registerForm.get('password')?.invalid && registerForm.get('password')?.touched }">
+    <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched" class="errorLabel">Password error</div>
+    
+    <button type="submit" [disabled]="!registerForm.valid">Submit</button>
+    <label class="alreadyGotAccount" (click)="navigateToLoginComponent()">Already got an account?</label>
+</form>

@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="buttons">
+        <div class="button" id="home">
+            <a routerLinkActive="active" [routerLink]="['/home']" class="route">Home</a>
+        </div>
+        <div class="button" id="shop">
+            <a routerLinkActive="active" [routerLink]="['/shop']" class="route">Shop</a>
+        </div>
+        <div class="button" id="cart">
+            <a routerLinkActive="active" [routerLink]="['/cart']" class="route">Cart</a>
+        </div>
+        <div *ngIf="isAdmin" class="button" id="Admin">
+            <a  routerLinkActive="active" [routerLink]="['/admin']" class="route">Admin</a>
+        </div>
+        <div *ngIf="!loggedIn" class="login" id="login">
+            <a routerLinkActive="active" [routerLink]="['/login']" class="route">Login</a>
+        </div>
+        <div *ngIf="loggedIn" class="button" id="button">
+            <a (click)="logout()" routerLinkActive="active" class="route">Logout</a>
+        </div>
+    </div>
+</div>

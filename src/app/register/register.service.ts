@@ -1,0 +1,38 @@
+import { Injectable } from '@angular/core';
+import { RegisterCredentials } from '../models/RegisterCredentials';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { BehaviorSubject } from 'rxjs';
+import { LoginService } from '../login/login.service';
+import { Router } from '@angular/router';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class RegisterService {
+
+  private usernameInUseSubject = new BehaviorSubject<boolean>(false);
+  usernameInUse$ = this.usernameInUseSubject.asObservable();
+
+  constructor(
+    private http: HttpClient,
+    private loginService: LoginService,
+    private router: Router,
+  ){}
+
+  sendRegisterRequest(credentials: RegisterCredentials) {
+    this.http
+      .post("http://85.215.60.238:8080/register", credentials, { responseType: 'text' })
+      .subscribe((data) => {
+        this.loginService.JwtToken = data;
+        this.router.navigate(['/home']);
+        this.loginService.checkIfUserIsAdmin();
+        this.usernameInUseSubject.next(false);
+      }, (error) => {
+        if(error.error === "Username in use"){
+          this.usernameInUseSubject.next(true);
+        }
+      });
+  }
+  
+  
+}

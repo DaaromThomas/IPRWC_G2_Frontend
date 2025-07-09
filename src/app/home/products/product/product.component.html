@@ -1,0 +1,9 @@
+<div class="container">
+    <img [src]="product.image" alt="niks" class="image">
+    <div class="info">
+        <p>{{ product.name }}</p>
+        <p class="cost">€{{ product.cost }}</p>
+        <button class="button" id="add-to-cart-button" (click)="addToCart()">Add</button>
+    </div>
+</div>
+
